@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rick_morty_tdc/core/router/app_router.dart';
 import 'package:rick_morty_tdc/modules/start/app/ui/widgets/background_image.dart';
 import 'package:rick_morty_tdc/modules/start/app/ui/widgets/title_image.dart';
 import 'package:rick_morty_tdc/theme/app_colors.dart';
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nameController = TextEditingController();
     return Scaffold(
       body: Stack(
         children: [
@@ -36,12 +39,19 @@ class HomePage extends StatelessWidget {
                       style: TEXT_THEME_WHITE.bodyMedium,
                       textAlign: TextAlign.center,
                     ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      controller: nameController,
+                    ),
                   ],
                 ),
 
                 //BOTÓN DE NAVEGACIÓN
                 NavButtonWidget(
-                  onPressed: () {},
+                  onPressed: () {
+                    print(nameController.text);
+                    context.goNamed(AppRoutes.characterHome.name);
+                  },
                   text: 'CONTINUAR',
                 ),
               ],
