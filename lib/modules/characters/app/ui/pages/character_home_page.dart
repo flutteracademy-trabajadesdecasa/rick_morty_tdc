@@ -31,7 +31,35 @@ class CharacterHomePage extends StatelessWidget {
           body: ListView.builder(
             itemCount: state.characters.length,
             itemBuilder: (context, index) {
-              return Text(state.characters[index].name);
+              return Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  child: Card(
+                    child: Container(
+                      height: 200,
+                      child: Row(
+                        children: [
+                          Image.network(
+                            state.characters[index].image,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                state.characters[index].name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(color: AppColors.COLOR_BLACK),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
             },
           ),
           floatingActionButton: FloatingActionButton(onPressed: () async {
