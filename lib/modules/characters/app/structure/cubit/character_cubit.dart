@@ -30,4 +30,35 @@ class CharacterCubit extends Cubit<CharacterState> {
 
     emit(state.copyWith(characters: initCharacters));
   }
+
+  Future<void> toogleFavCharacters(int idElement) async {
+    final myCharacters = state.characters;
+
+    List<CharacterDTO> newCharacters = myCharacters.map((element) {
+      if (element.id == idElement) {
+        print(element.isFavourite);
+        element.isFavourite ??= false;
+        print(element.isFavourite);
+        final myCharacterElement = CharacterDTO(
+          id: element.id,
+          name: element.name,
+          status: element.status,
+          species: element.species,
+          type: element.type,
+          gender: element.gender,
+          origin: element.origin,
+          location: element.location,
+          image: element.image,
+          episode: element.episode,
+          url: element.url,
+          created: element.created,
+          isFavourite: !element.isFavourite!,
+        );
+        print(myCharacterElement);
+        return myCharacterElement;
+      }
+      return element;
+    }).toList();
+    emit(state.copyWith(characters: newCharacters));
+  }
 }

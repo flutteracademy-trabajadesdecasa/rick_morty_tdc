@@ -28,8 +28,10 @@ class CardCharacter extends StatelessWidget {
                 Positioned(
                   bottom: 10,
                   right: 10,
-                  child: FavouriteButton(),
-                )
+                  child: FavouriteButton(
+                    character: character,
+                  ),
+                ),
               ],
             ),
             Column(
