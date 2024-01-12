@@ -8,9 +8,25 @@ class CharacterCubit extends Cubit<CharacterState> {
 
   CharacterApiServices characterApiServices = CharacterApiServices();
 
-  Future<void> initCubit() async {
+  Future<void> initCubitByPage1() async {
     List<CharacterDTO> initCharacters =
         await characterApiServices.getCharactersPerPage(1);
+
+    emit(state.copyWith(characters: initCharacters));
+  }
+
+  Future<void> changePage(int page) async {
+    emit(state.copyWith(myPage: page));
+
+    List<CharacterDTO> initCharacters =
+        await characterApiServices.getCharactersPerPage(page);
+
+    emit(state.copyWith(characters: initCharacters));
+  }
+
+  Future<void> getCharacterPerPage() async {
+    List<CharacterDTO> initCharacters =
+        await characterApiServices.getCharactersPerPage(state.myPage ?? 1);
 
     emit(state.copyWith(characters: initCharacters));
   }

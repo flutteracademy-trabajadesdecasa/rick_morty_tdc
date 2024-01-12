@@ -18,13 +18,20 @@ class CharacterApiServices {
     );
 
     try {
-      final http.Response response = await http.get(myUri);
+      final http.Response response = await http.get(
+        myUri,
+        //En el caso de tener token:
+        // headers: <String, String>{
+        //   'Content-Type': 'application/json; charset=UTF-8',
+        //   'auth_token':'myToken'
+
+        // },
+      );
       print(response);
       if (response.statusCode != 200) {
         print(response.statusCode);
       } else {
         final responseBody = jsonDecode(response.body);
-
         final myDynamicList = responseBody['results'];
         print(response.body);
         myCharacters = myDynamicList

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:rick_morty_tdc/core/locator/locator.dart';
 import 'package:rick_morty_tdc/modules/characters/app/structure/cubit/character_cubit.dart';
 import 'package:rick_morty_tdc/modules/characters/app/structure/cubit/character_state.dart';
+import 'package:rick_morty_tdc/modules/characters/app/ui/widgets/cards/card_character.dart';
 import 'package:rick_morty_tdc/modules/characters/data/services/character_api_services.dart';
 import 'package:rick_morty_tdc/theme/app_colors.dart';
 
@@ -13,7 +14,7 @@ class CharacterHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CharacterCubit, CharacterState>(
-      bloc: locator<CharacterCubit>()..initCubit(),
+      bloc: locator<CharacterCubit>()..initCubitByPage1(),
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -32,38 +33,14 @@ class CharacterHomePage extends StatelessWidget {
             itemCount: state.characters.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  child: Card(
-                    child: Container(
-                      height: 200,
-                      child: Row(
-                        children: [
-                          Image.network(
-                            state.characters[index].image,
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                state.characters[index].name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(color: AppColors.COLOR_BLACK),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: CardCharacter(character: state.characters[index]));
             },
           ),
           floatingActionButton: FloatingActionButton(onPressed: () async {
-            await CharacterApiServices().getCharactersPerPage(2);
+            await locator<CharacterCubit>().changePage(3);
+            //await locator<CharacterCubit>().getCharacterPerPage();
+            // await CharacterApiServices().getCharactersPerPage(2);
           }),
         );
       },

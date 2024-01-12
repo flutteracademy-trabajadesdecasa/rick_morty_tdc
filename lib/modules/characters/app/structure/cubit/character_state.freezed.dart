@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CharacterState {
   List<CharacterDTO> get characters => throw _privateConstructorUsedError;
+  int? get myPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CharacterStateCopyWith<CharacterState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $CharacterStateCopyWith<$Res> {
           CharacterState value, $Res Function(CharacterState) then) =
       _$CharacterStateCopyWithImpl<$Res, CharacterState>;
   @useResult
-  $Res call({List<CharacterDTO> characters});
+  $Res call({List<CharacterDTO> characters, int? myPage});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
   @override
   $Res call({
     Object? characters = null,
+    Object? myPage = freezed,
   }) {
     return _then(_value.copyWith(
       characters: null == characters
           ? _value.characters
           : characters // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      myPage: freezed == myPage
+          ? _value.myPage
+          : myPage // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$CharacterStateImplCopyWith<$Res>
       __$$CharacterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CharacterDTO> characters});
+  $Res call({List<CharacterDTO> characters, int? myPage});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? characters = null,
+    Object? myPage = freezed,
   }) {
     return _then(_$CharacterStateImpl(
       characters: null == characters
           ? _value._characters
           : characters // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      myPage: freezed == myPage
+          ? _value.myPage
+          : myPage // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -92,7 +103,8 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CharacterStateImpl implements _CharacterState {
-  const _$CharacterStateImpl({final List<CharacterDTO> characters = const []})
+  const _$CharacterStateImpl(
+      {final List<CharacterDTO> characters = const [], this.myPage})
       : _characters = characters;
 
   final List<CharacterDTO> _characters;
@@ -105,8 +117,11 @@ class _$CharacterStateImpl implements _CharacterState {
   }
 
   @override
+  final int? myPage;
+
+  @override
   String toString() {
-    return 'CharacterState(characters: $characters)';
+    return 'CharacterState(characters: $characters, myPage: $myPage)';
   }
 
   @override
@@ -115,12 +130,13 @@ class _$CharacterStateImpl implements _CharacterState {
         (other.runtimeType == runtimeType &&
             other is _$CharacterStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._characters, _characters));
+                .equals(other._characters, _characters) &&
+            (identical(other.myPage, myPage) || other.myPage == myPage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_characters));
+      runtimeType, const DeepCollectionEquality().hash(_characters), myPage);
 
   @JsonKey(ignore: true)
   @override
@@ -131,11 +147,14 @@ class _$CharacterStateImpl implements _CharacterState {
 }
 
 abstract class _CharacterState implements CharacterState {
-  const factory _CharacterState({final List<CharacterDTO> characters}) =
-      _$CharacterStateImpl;
+  const factory _CharacterState(
+      {final List<CharacterDTO> characters,
+      final int? myPage}) = _$CharacterStateImpl;
 
   @override
   List<CharacterDTO> get characters;
+  @override
+  int? get myPage;
   @override
   @JsonKey(ignore: true)
   _$$CharacterStateImplCopyWith<_$CharacterStateImpl> get copyWith =>
