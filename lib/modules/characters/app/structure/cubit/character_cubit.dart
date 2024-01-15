@@ -53,6 +53,7 @@ class CharacterCubit extends Cubit<CharacterState> {
           url: element.url,
           created: element.created,
           isFavourite: !element.isFavourite!,
+          hePresionadoElFav: DateTime.now(),
         );
         print(myCharacterElement);
         return myCharacterElement;

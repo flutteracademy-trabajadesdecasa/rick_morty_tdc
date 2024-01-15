@@ -17,6 +17,7 @@ class CharacterDTO {
   final String url;
   final DateTime created;
   bool? isFavourite;
+  DateTime? hePresionadoElFav;
 
   CharacterDTO({
     required this.id,
@@ -32,6 +33,7 @@ class CharacterDTO {
     required this.url,
     required this.created,
     this.isFavourite,
+    this.hePresionadoElFav,
   });
 
   factory CharacterDTO.fromJson(Map<String, dynamic> json) =>
