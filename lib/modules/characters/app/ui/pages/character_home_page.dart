@@ -23,24 +23,47 @@ class CharacterHomePage extends StatelessWidget {
               onPressed: () {
                 context.pop();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
               ),
             ),
           ),
           backgroundColor: AppColors.COLOR_BLACK,
-          body: ListView.builder(
-            itemCount: state.characters.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                  child: CardCharacter(character: state.characters[index]));
-            },
-          ),
+          body: (state.filters == FiltersCharacters.inital)
+              ? ListView.builder(
+                  itemCount: state.characters.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                        padding:
+                            const EdgeInsets.only(left: 20, right: 20, top: 10),
+                        child:
+                            CardCharacter(character: state.characters[index]));
+                  },
+                )
+              : (state.filters == FiltersCharacters.favs)
+                  ? ListView.builder(
+                      itemCount: state.charactersFavs.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 20, top: 10),
+                            child: CardCharacter(
+                                character: state.charactersFavs[index]));
+                      },
+                    )
+                  : Container(),
           floatingActionButton: FloatingActionButton(onPressed: () async {
-            await locator<CharacterCubit>().changePage(3);
+            // await locator<CharacterCubit>().changePage(3);
             //await locator<CharacterCubit>().getCharacterPerPage();
             // await CharacterApiServices().getCharactersPerPage(2);
+
+            if (state.filters == FiltersCharacters.inital) {
+              locator<CharacterCubit>().changeFilter(FiltersCharacters.favs);
+            }
+
+            if (state.filters == FiltersCharacters.favs) {
+              locator<CharacterCubit>().changeFilter(FiltersCharacters.inital);
+            }
           }),
         );
       },

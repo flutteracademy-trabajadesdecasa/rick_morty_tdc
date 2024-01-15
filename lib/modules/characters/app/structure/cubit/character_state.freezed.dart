@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CharacterState {
   List<CharacterDTO> get characters => throw _privateConstructorUsedError;
   List<CharacterDTO> get charactersFavs => throw _privateConstructorUsedError;
+  dynamic get filters => throw _privateConstructorUsedError;
   int? get myPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,6 +35,7 @@ abstract class $CharacterStateCopyWith<$Res> {
   $Res call(
       {List<CharacterDTO> characters,
       List<CharacterDTO> charactersFavs,
+      dynamic filters,
       int? myPage});
 }
 
@@ -52,6 +54,7 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
   $Res call({
     Object? characters = null,
     Object? charactersFavs = null,
+    Object? filters = freezed,
     Object? myPage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,6 +66,10 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
           ? _value.charactersFavs
           : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      filters: freezed == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       myPage: freezed == myPage
           ? _value.myPage
           : myPage // ignore: cast_nullable_to_non_nullable
@@ -82,6 +89,7 @@ abstract class _$$CharacterStateImplCopyWith<$Res>
   $Res call(
       {List<CharacterDTO> characters,
       List<CharacterDTO> charactersFavs,
+      dynamic filters,
       int? myPage});
 }
 
@@ -98,6 +106,7 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
   $Res call({
     Object? characters = null,
     Object? charactersFavs = null,
+    Object? filters = freezed,
     Object? myPage = freezed,
   }) {
     return _then(_$CharacterStateImpl(
@@ -109,6 +118,7 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
           ? _value._charactersFavs
           : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      filters: freezed == filters ? _value.filters! : filters,
       myPage: freezed == myPage
           ? _value.myPage
           : myPage // ignore: cast_nullable_to_non_nullable
@@ -123,6 +133,7 @@ class _$CharacterStateImpl implements _CharacterState {
   const _$CharacterStateImpl(
       {final List<CharacterDTO> characters = const [],
       final List<CharacterDTO> charactersFavs = const [],
+      this.filters = FiltersCharacters.inital,
       this.myPage})
       : _characters = characters,
         _charactersFavs = charactersFavs;
@@ -146,11 +157,14 @@ class _$CharacterStateImpl implements _CharacterState {
   }
 
   @override
+  @JsonKey()
+  final dynamic filters;
+  @override
   final int? myPage;
 
   @override
   String toString() {
-    return 'CharacterState(characters: $characters, charactersFavs: $charactersFavs, myPage: $myPage)';
+    return 'CharacterState(characters: $characters, charactersFavs: $charactersFavs, filters: $filters, myPage: $myPage)';
   }
 
   @override
@@ -162,6 +176,7 @@ class _$CharacterStateImpl implements _CharacterState {
                 .equals(other._characters, _characters) &&
             const DeepCollectionEquality()
                 .equals(other._charactersFavs, _charactersFavs) &&
+            const DeepCollectionEquality().equals(other.filters, filters) &&
             (identical(other.myPage, myPage) || other.myPage == myPage));
   }
 
@@ -170,6 +185,7 @@ class _$CharacterStateImpl implements _CharacterState {
       runtimeType,
       const DeepCollectionEquality().hash(_characters),
       const DeepCollectionEquality().hash(_charactersFavs),
+      const DeepCollectionEquality().hash(filters),
       myPage);
 
   @JsonKey(ignore: true)
@@ -184,12 +200,15 @@ abstract class _CharacterState implements CharacterState {
   const factory _CharacterState(
       {final List<CharacterDTO> characters,
       final List<CharacterDTO> charactersFavs,
+      final dynamic filters,
       final int? myPage}) = _$CharacterStateImpl;
 
   @override
   List<CharacterDTO> get characters;
   @override
   List<CharacterDTO> get charactersFavs;
+  @override
+  dynamic get filters;
   @override
   int? get myPage;
   @override

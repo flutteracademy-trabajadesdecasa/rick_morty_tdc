@@ -77,11 +77,22 @@ class CharacterCubit extends Cubit<CharacterState> {
       }
       return element;
     }).toList();
-    emit(state.copyWith(characters: newCharacters));
+    emit(
+      state.copyWith(
+        characters: newCharacters,
+        charactersFavs: newCharacters
+            .where((element) => element.isFavourite == true)
+            .toList(),
+      ),
+    );
     await characterApiServices.setCharactersFavs(
       favCharacters: newCharacters
           .where((element) => element.isFavourite == true)
           .toList(),
     );
+  }
+
+  void changeFilter(FiltersCharacters myFilter) {
+    emit(state.copyWith(filters: myFilter));
   }
 }
