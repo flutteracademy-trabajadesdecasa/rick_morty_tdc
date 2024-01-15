@@ -7,6 +7,7 @@ part 'character_state.freezed.dart';
 class CharacterState with _$CharacterState {
   const factory CharacterState({
     @Default([]) List<CharacterDTO> characters,
+    @Default([]) List<CharacterDTO> charactersFavs,
     int? myPage,
     //  List<CharacterDTO>? characters2,
   }) = _CharacterState;

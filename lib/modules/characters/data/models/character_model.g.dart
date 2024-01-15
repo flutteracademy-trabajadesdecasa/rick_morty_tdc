@@ -21,6 +21,9 @@ CharacterDTO _$CharacterDTOFromJson(Map<String, dynamic> json) => CharacterDTO(
       url: json['url'] as String,
       created: DateTime.parse(json['created'] as String),
       isFavourite: json['isFavourite'] as bool?,
+      hePresionadoElFav: json['hePresionadoElFav'] == null
+          ? null
+          : DateTime.parse(json['hePresionadoElFav'] as String),
     );
 
 Map<String, dynamic> _$CharacterDTOToJson(CharacterDTO instance) =>
@@ -38,6 +41,7 @@ Map<String, dynamic> _$CharacterDTOToJson(CharacterDTO instance) =>
       'url': instance.url,
       'created': instance.created.toIso8601String(),
       'isFavourite': instance.isFavourite,
+      'hePresionadoElFav': instance.hePresionadoElFav?.toIso8601String(),
     };
 
 Origin _$OriginFromJson(Map<String, dynamic> json) => Origin(

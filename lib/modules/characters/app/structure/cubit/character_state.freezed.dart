@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CharacterState {
   List<CharacterDTO> get characters => throw _privateConstructorUsedError;
+  List<CharacterDTO> get charactersFavs => throw _privateConstructorUsedError;
   int? get myPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,10 @@ abstract class $CharacterStateCopyWith<$Res> {
           CharacterState value, $Res Function(CharacterState) then) =
       _$CharacterStateCopyWithImpl<$Res, CharacterState>;
   @useResult
-  $Res call({List<CharacterDTO> characters, int? myPage});
+  $Res call(
+      {List<CharacterDTO> characters,
+      List<CharacterDTO> charactersFavs,
+      int? myPage});
 }
 
 /// @nodoc
@@ -47,12 +51,17 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
   @override
   $Res call({
     Object? characters = null,
+    Object? charactersFavs = null,
     Object? myPage = freezed,
   }) {
     return _then(_value.copyWith(
       characters: null == characters
           ? _value.characters
           : characters // ignore: cast_nullable_to_non_nullable
+              as List<CharacterDTO>,
+      charactersFavs: null == charactersFavs
+          ? _value.charactersFavs
+          : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
       myPage: freezed == myPage
           ? _value.myPage
@@ -70,7 +79,10 @@ abstract class _$$CharacterStateImplCopyWith<$Res>
       __$$CharacterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CharacterDTO> characters, int? myPage});
+  $Res call(
+      {List<CharacterDTO> characters,
+      List<CharacterDTO> charactersFavs,
+      int? myPage});
 }
 
 /// @nodoc
@@ -85,12 +97,17 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? characters = null,
+    Object? charactersFavs = null,
     Object? myPage = freezed,
   }) {
     return _then(_$CharacterStateImpl(
       characters: null == characters
           ? _value._characters
           : characters // ignore: cast_nullable_to_non_nullable
+              as List<CharacterDTO>,
+      charactersFavs: null == charactersFavs
+          ? _value._charactersFavs
+          : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
       myPage: freezed == myPage
           ? _value.myPage
@@ -104,8 +121,11 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
 
 class _$CharacterStateImpl implements _CharacterState {
   const _$CharacterStateImpl(
-      {final List<CharacterDTO> characters = const [], this.myPage})
-      : _characters = characters;
+      {final List<CharacterDTO> characters = const [],
+      final List<CharacterDTO> charactersFavs = const [],
+      this.myPage})
+      : _characters = characters,
+        _charactersFavs = charactersFavs;
 
   final List<CharacterDTO> _characters;
   @override
@@ -116,12 +136,21 @@ class _$CharacterStateImpl implements _CharacterState {
     return EqualUnmodifiableListView(_characters);
   }
 
+  final List<CharacterDTO> _charactersFavs;
+  @override
+  @JsonKey()
+  List<CharacterDTO> get charactersFavs {
+    if (_charactersFavs is EqualUnmodifiableListView) return _charactersFavs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_charactersFavs);
+  }
+
   @override
   final int? myPage;
 
   @override
   String toString() {
-    return 'CharacterState(characters: $characters, myPage: $myPage)';
+    return 'CharacterState(characters: $characters, charactersFavs: $charactersFavs, myPage: $myPage)';
   }
 
   @override
@@ -131,12 +160,17 @@ class _$CharacterStateImpl implements _CharacterState {
             other is _$CharacterStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._characters, _characters) &&
+            const DeepCollectionEquality()
+                .equals(other._charactersFavs, _charactersFavs) &&
             (identical(other.myPage, myPage) || other.myPage == myPage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_characters), myPage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_characters),
+      const DeepCollectionEquality().hash(_charactersFavs),
+      myPage);
 
   @JsonKey(ignore: true)
   @override
@@ -149,10 +183,13 @@ class _$CharacterStateImpl implements _CharacterState {
 abstract class _CharacterState implements CharacterState {
   const factory _CharacterState(
       {final List<CharacterDTO> characters,
+      final List<CharacterDTO> charactersFavs,
       final int? myPage}) = _$CharacterStateImpl;
 
   @override
   List<CharacterDTO> get characters;
+  @override
+  List<CharacterDTO> get charactersFavs;
   @override
   int? get myPage;
   @override

@@ -12,7 +12,24 @@ class CharacterCubit extends Cubit<CharacterState> {
     List<CharacterDTO> initCharacters =
         await characterApiServices.getCharactersPerPage(1);
 
-    emit(state.copyWith(characters: initCharacters));
+    List<CharacterDTO>? myFavsCharacters =
+        await characterApiServices.getCharctersFavs();
+
+    List<CharacterDTO> result = initCharacters.map((character) {
+      return myFavsCharacters!.firstWhere(
+        (favCharacter) => favCharacter.id == character.id,
+        orElse: () => character,
+      );
+    }).toList();
+
+    print(initCharacters);
+    print(myFavsCharacters);
+    print(result);
+
+    emit(state.copyWith(
+      characters: result,
+      charactersFavs: myFavsCharacters ?? [],
+    ));
   }
 
   Future<void> changePage(int page) async {
@@ -61,5 +78,10 @@ class CharacterCubit extends Cubit<CharacterState> {
       return element;
     }).toList();
     emit(state.copyWith(characters: newCharacters));
+    await characterApiServices.setCharactersFavs(
+      favCharacters: newCharacters
+          .where((element) => element.isFavourite == true)
+          .toList(),
+    );
   }
 }

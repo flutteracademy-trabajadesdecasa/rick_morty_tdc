@@ -89,7 +89,7 @@ class CharacterApiServices {
 
       return listResponse;
     } catch (e) {
-      return null;
+      return [];
     }
   }
 }
