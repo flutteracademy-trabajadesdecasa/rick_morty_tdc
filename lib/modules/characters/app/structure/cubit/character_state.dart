@@ -10,6 +10,7 @@ class CharacterState with _$CharacterState {
   const factory CharacterState({
     @Default([]) List<CharacterDTO> characters,
     @Default([]) List<CharacterDTO> charactersFavs,
+    CharacterDTO? selectedCharacter,
     @Default(FiltersCharacters.inital) filters,
     int? myPage,
     //  List<CharacterDTO>? characters2,

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CharacterState {
   List<CharacterDTO> get characters => throw _privateConstructorUsedError;
   List<CharacterDTO> get charactersFavs => throw _privateConstructorUsedError;
+  CharacterDTO? get selectedCharacter => throw _privateConstructorUsedError;
   dynamic get filters => throw _privateConstructorUsedError;
   int? get myPage => throw _privateConstructorUsedError;
 
@@ -35,6 +36,7 @@ abstract class $CharacterStateCopyWith<$Res> {
   $Res call(
       {List<CharacterDTO> characters,
       List<CharacterDTO> charactersFavs,
+      CharacterDTO? selectedCharacter,
       dynamic filters,
       int? myPage});
 }
@@ -54,6 +56,7 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
   $Res call({
     Object? characters = null,
     Object? charactersFavs = null,
+    Object? selectedCharacter = freezed,
     Object? filters = freezed,
     Object? myPage = freezed,
   }) {
@@ -66,6 +69,10 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
           ? _value.charactersFavs
           : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      selectedCharacter: freezed == selectedCharacter
+          ? _value.selectedCharacter
+          : selectedCharacter // ignore: cast_nullable_to_non_nullable
+              as CharacterDTO?,
       filters: freezed == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -89,6 +96,7 @@ abstract class _$$CharacterStateImplCopyWith<$Res>
   $Res call(
       {List<CharacterDTO> characters,
       List<CharacterDTO> charactersFavs,
+      CharacterDTO? selectedCharacter,
       dynamic filters,
       int? myPage});
 }
@@ -106,6 +114,7 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
   $Res call({
     Object? characters = null,
     Object? charactersFavs = null,
+    Object? selectedCharacter = freezed,
     Object? filters = freezed,
     Object? myPage = freezed,
   }) {
@@ -118,6 +127,10 @@ class __$$CharacterStateImplCopyWithImpl<$Res>
           ? _value._charactersFavs
           : charactersFavs // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
+      selectedCharacter: freezed == selectedCharacter
+          ? _value.selectedCharacter
+          : selectedCharacter // ignore: cast_nullable_to_non_nullable
+              as CharacterDTO?,
       filters: freezed == filters ? _value.filters! : filters,
       myPage: freezed == myPage
           ? _value.myPage
@@ -133,6 +146,7 @@ class _$CharacterStateImpl implements _CharacterState {
   const _$CharacterStateImpl(
       {final List<CharacterDTO> characters = const [],
       final List<CharacterDTO> charactersFavs = const [],
+      this.selectedCharacter,
       this.filters = FiltersCharacters.inital,
       this.myPage})
       : _characters = characters,
@@ -157,6 +171,8 @@ class _$CharacterStateImpl implements _CharacterState {
   }
 
   @override
+  final CharacterDTO? selectedCharacter;
+  @override
   @JsonKey()
   final dynamic filters;
   @override
@@ -164,7 +180,7 @@ class _$CharacterStateImpl implements _CharacterState {
 
   @override
   String toString() {
-    return 'CharacterState(characters: $characters, charactersFavs: $charactersFavs, filters: $filters, myPage: $myPage)';
+    return 'CharacterState(characters: $characters, charactersFavs: $charactersFavs, selectedCharacter: $selectedCharacter, filters: $filters, myPage: $myPage)';
   }
 
   @override
@@ -176,6 +192,8 @@ class _$CharacterStateImpl implements _CharacterState {
                 .equals(other._characters, _characters) &&
             const DeepCollectionEquality()
                 .equals(other._charactersFavs, _charactersFavs) &&
+            (identical(other.selectedCharacter, selectedCharacter) ||
+                other.selectedCharacter == selectedCharacter) &&
             const DeepCollectionEquality().equals(other.filters, filters) &&
             (identical(other.myPage, myPage) || other.myPage == myPage));
   }
@@ -185,6 +203,7 @@ class _$CharacterStateImpl implements _CharacterState {
       runtimeType,
       const DeepCollectionEquality().hash(_characters),
       const DeepCollectionEquality().hash(_charactersFavs),
+      selectedCharacter,
       const DeepCollectionEquality().hash(filters),
       myPage);
 
@@ -200,6 +219,7 @@ abstract class _CharacterState implements CharacterState {
   const factory _CharacterState(
       {final List<CharacterDTO> characters,
       final List<CharacterDTO> charactersFavs,
+      final CharacterDTO? selectedCharacter,
       final dynamic filters,
       final int? myPage}) = _$CharacterStateImpl;
 
@@ -207,6 +227,8 @@ abstract class _CharacterState implements CharacterState {
   List<CharacterDTO> get characters;
   @override
   List<CharacterDTO> get charactersFavs;
+  @override
+  CharacterDTO? get selectedCharacter;
   @override
   dynamic get filters;
   @override

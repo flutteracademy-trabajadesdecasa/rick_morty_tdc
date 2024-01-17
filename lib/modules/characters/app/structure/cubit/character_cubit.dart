@@ -73,8 +73,15 @@ class CharacterCubit extends Cubit<CharacterState> {
           hePresionadoElFav: DateTime.now(),
         );
         print(myCharacterElement);
+
+        // Metodo que permite cambiar el personaje seleccionado cuando cambio el fav
+        if (state.selectedCharacter != null &&
+            element.id == state.selectedCharacter!.id) {
+          emit(state.copyWith(selectedCharacter: myCharacterElement));
+        }
         return myCharacterElement;
       }
+
       return element;
     }).toList();
     emit(
@@ -94,5 +101,13 @@ class CharacterCubit extends Cubit<CharacterState> {
 
   void changeFilter(FiltersCharacters myFilter) {
     emit(state.copyWith(filters: myFilter));
+  }
+
+  void changeCharacter(CharacterDTO myCharacter) {
+    /// TODO LO QUE YO QUIERA DE PARTE LOGICA
+    /// INCLUIDAS LLAMAS A BASE DE DATOS PARA MODIFICAR LOS CAMPOS
+    /// DE MI PERSONAJE SELECCIONADO
+
+    emit(state.copyWith(selectedCharacter: myCharacter));
   }
 }

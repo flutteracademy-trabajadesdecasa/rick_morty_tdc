@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rick_morty_tdc/core/locator/locator.dart';
 import 'package:rick_morty_tdc/core/router/app_router.dart';
+import 'package:rick_morty_tdc/modules/characters/app/structure/cubit/character_cubit.dart';
 import 'package:rick_morty_tdc/modules/characters/app/ui/pages/character_details_page.dart';
 import 'package:rick_morty_tdc/modules/characters/app/ui/widgets/buttons/favourite_button.dart';
 import 'package:rick_morty_tdc/modules/characters/data/models/character_model.dart';
@@ -19,10 +21,13 @@ class CardCharacter extends StatelessWidget {
       onTap: () {
         context.goNamed(
           AppRoutes.charaterDetail.name,
-          extra: CharacterDetailsPageObject(
-            myCharacter: character,
-          ),
+          //Navegar con argumentos
+          // extra: CharacterDetailsPageObject(
+          //   myCharacter: character,
+          // ),
         );
+        //Navegar mediante estados: Airbnb
+        locator<CharacterCubit>().changeCharacter(character);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(30)),

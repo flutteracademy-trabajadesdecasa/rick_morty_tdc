@@ -31,8 +31,9 @@ final goRouterConfiguracion = GoRouter(
                 name: AppRoutes.charaterDetail.name,
                 builder: (context, state) {
                   return CharacterDetailsPage(
-                    characterObject: state.extra as CharacterDetailsPageObject,
-                  );
+                      //Navegar con argumentos
+                      // characterObject: state.extra as CharacterDetailsPageObject,
+                      );
                 },
               ),
             ],
