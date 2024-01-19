@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                 NavButtonWidget(
                   onPressed: () {
                     print(nameController.text);
-                    context.goNamed(AppRoutes.characterHome.name);
+                    context.goNamed(AppRoutes.login.name);
                   },
                   text: 'CONTINUAR',
                 ),
