@@ -39,7 +39,8 @@ final goRouterConfiguracion = GoRouter(
     if (useBloc.state.isLogged == false &&
         !routesWithoutAuth.contains(state.matchedLocation)) {
       return '/check';
-    } else if (useBloc.state.isLogged == true) {
+    } else if (useBloc.state.isLogged == true &&
+        !routesWithAuth.contains(state.matchedLocation)) {
       return '/characterHome';
     }
     return null;
