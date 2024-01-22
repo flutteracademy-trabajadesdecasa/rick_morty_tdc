@@ -57,7 +57,10 @@ class LoginPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            locator<StartAppCubit>().singIn();
+                            locator<StartAppCubit>().singIn(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                           }
                         },
                         child: Container(

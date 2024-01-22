@@ -58,7 +58,10 @@ class RegisterPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            locator<StartAppCubit>().signUp();
+                            locator<StartAppCubit>().signUp(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                           }
                         },
                         child: Container(
