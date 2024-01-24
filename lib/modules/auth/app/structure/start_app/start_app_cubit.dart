@@ -16,6 +16,7 @@ class StartAppCubit extends Cubit<StartAppState> {
     );
 
     if (myCredentials.user?.uid != null) {
+      AuthServices().setUserRegister(isRegister: true);
       emit(state.copyWith(isLogged: true));
     }
   }
@@ -30,11 +31,21 @@ class StartAppCubit extends Cubit<StartAppState> {
     );
 
     if (myCredentials.user?.uid != null) {
+      AuthServices().setUserRegister(isRegister: true);
       emit(state.copyWith(isLogged: true));
     }
   }
 
-  void signOut() {
-    emit(state.copyWith(isLogged: false));
+  Future<void> signOut() async {
+    bool isCorrectDelete = await AuthServices().deleteUserRegister();
+
+    if (isCorrectDelete == true) {
+      emit(state.copyWith(isLogged: false));
+    }
+  }
+
+  Future<void> init() async {
+    bool userIsLoged = await AuthServices().getUserRegister();
+    emit(state.copyWith(isLogged: userIsLoged));
   }
 }

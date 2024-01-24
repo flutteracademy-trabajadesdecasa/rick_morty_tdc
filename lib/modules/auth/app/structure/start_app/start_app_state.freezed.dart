@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StartAppState {
-  bool get isLogged => throw _privateConstructorUsedError;
+  bool? get isLogged => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StartAppStateCopyWith<StartAppState> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $StartAppStateCopyWith<$Res> {
           StartAppState value, $Res Function(StartAppState) then) =
       _$StartAppStateCopyWithImpl<$Res, StartAppState>;
   @useResult
-  $Res call({bool isLogged});
+  $Res call({bool? isLogged});
 }
 
 /// @nodoc
@@ -45,13 +45,13 @@ class _$StartAppStateCopyWithImpl<$Res, $Val extends StartAppState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogged = null,
+    Object? isLogged = freezed,
   }) {
     return _then(_value.copyWith(
-      isLogged: null == isLogged
+      isLogged: freezed == isLogged
           ? _value.isLogged
           : isLogged // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -64,7 +64,7 @@ abstract class _$$StartAppStateImplCopyWith<$Res>
       __$$StartAppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLogged});
+  $Res call({bool? isLogged});
 }
 
 /// @nodoc
@@ -78,13 +78,13 @@ class __$$StartAppStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLogged = null,
+    Object? isLogged = freezed,
   }) {
     return _then(_$StartAppStateImpl(
-      isLogged: null == isLogged
+      isLogged: freezed == isLogged
           ? _value.isLogged
           : isLogged // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -92,11 +92,10 @@ class __$$StartAppStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartAppStateImpl implements _StartAppState {
-  const _$StartAppStateImpl({this.isLogged = false});
+  const _$StartAppStateImpl({this.isLogged});
 
   @override
-  @JsonKey()
-  final bool isLogged;
+  final bool? isLogged;
 
   @override
   String toString() {
@@ -123,10 +122,10 @@ class _$StartAppStateImpl implements _StartAppState {
 }
 
 abstract class _StartAppState implements StartAppState {
-  const factory _StartAppState({final bool isLogged}) = _$StartAppStateImpl;
+  const factory _StartAppState({final bool? isLogged}) = _$StartAppStateImpl;
 
   @override
-  bool get isLogged;
+  bool? get isLogged;
   @override
   @JsonKey(ignore: true)
   _$$StartAppStateImplCopyWith<_$StartAppStateImpl> get copyWith =>

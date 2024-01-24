@@ -5,6 +5,6 @@ part 'start_app_state.freezed.dart';
 @freezed
 class StartAppState with _$StartAppState {
   const factory StartAppState({
-    @Default(false) bool isLogged,
+    bool? isLogged,
   }) = _StartAppState;
 }
